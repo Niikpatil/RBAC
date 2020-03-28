@@ -69,7 +69,7 @@ class UserController extends Controller
     {
         if(Gate::denies('edit-users'))
         {
-            return redirect()->route('admin.users.index');
+            return redirect(route('admin.users.index'));
         }
 
         $roles = Role::all();
@@ -90,6 +90,10 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->roles()->sync($request->roles);
+
+        $user->name = $request->input('name');
+        $user->name = $request->input('name');
+        $user->save();
 
         return redirect()->route('admin.users.index');
     }
