@@ -92,7 +92,6 @@ class UserController extends Controller
         $user->roles()->sync($request->roles);
 
         $user->name = $request->input('name');
-        $user->name = $request->input('name');
         $user->save();
 
         return redirect()->route('admin.users.index');
